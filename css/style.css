@@ -1,30 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  text-align: center;
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
   background-color: #212121;
+  align-items: center;
   overflow: hidden;
   padding: 0 20px;
 }
 
 .nav {
   display: inline-flex;
+  justify-content: right;
   position: relative;
   overflow: hidden;
-  max-width: 100%;
+  min-width: 100%;
   background-color: #212121;
-  padding: 0 20px;
+  padding: 10px 20px;
+  margin: 10px 0;
   border-radius: 40px;
   box-shadow: 0 10px 40px rgba(10, 10, 10, 0.9);
+}
+
+@media (max-width: 768px) {
+  .nav-item:before,
+  .is-active {
+    all: unset;
+  }
 }
 
 .nav-item {
@@ -38,11 +42,10 @@ body {
   font-weight: 500;
   position: relative;
 }
-
-.nav-item::before {
+.nav-item:before {
   content: "";
   position: absolute;
-  bottom: -6px;
+  bottom: -20px;
   left: 0;
   width: 100%;
   height: 5px;
@@ -54,8 +57,9 @@ body {
 
 .nav-item:not(.is-active):hover:before {
   opacity: 1;
-  bottom: 0;
+  bottom: -10px;
 }
+
 .nav-item:not(.is-active):hover {
   color: #fcfcfc;
 }
@@ -64,18 +68,50 @@ body {
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 4px;
   transition: 0.4s;
+  height: 5px;
   z-index: 1;
   border-radius: 8px 8px 0 0;
 }
 
-img {
-    border-radius: 40px;
+.nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 10px;
+  top: -20px;
 }
 
-@media (max-width: 580px) {
-  .nav {
-    overflow: auto;
+.nav-logo img {
+  width: 120px;
+  height: auto;
+}
+@media (max-width: 768px) {
+  body {
+    overflow: visible;
+    overflow-x: hidden;
   }
+  .nav {
+    overflow: visible;
+    flex-direction: column;
+  }
+  .nav-indicator {
+    display: none;
+  }
+  .nav-item:nth-child(2) {
+    margin-top: 80px;
+  }
+  .nav-item:not(.is-active):hover:before {
+    opacity: 0;
+  }
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-logo img {
+  width: 80px;
 }
