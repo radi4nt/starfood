@@ -20,3 +20,9 @@ items.forEach((item, index) => {
   item.addEventListener('click', e => {handleIndicator(e.target);});
   item.classList.contains('is-active') && handleIndicator(item);
 });
+
+const stars = document.querySelector("#star-holder")
+const starcount = localStorage.setItem("starCount", 0)
+stars.innerHTML = `<span>Stars: 🌟${localStorage.getItem("starCount")}</span>`
+
+
